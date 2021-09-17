@@ -80,3 +80,5 @@ A known issue [here](https://github.com/zyang-ur/SAT/blob/main/referit3d/scripts
 ## Credits
 The project is built based on the following repository:
 * [ReferIt3D](https://github.com/referit3d/referit3d).
+
+Part of the code or models are from [MMF](https://github.com/facebookresearch/mmf), [TAP](https://github.com/microsoft/TAP), and [ViLBERT](https://github.com/jiasenlu/vilbert_beta).

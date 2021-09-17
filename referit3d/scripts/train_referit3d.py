@@ -10,7 +10,7 @@ import torch.nn as nn
 from torch import optim
 from termcolor import colored
 # ## might be related to the memory issue https://github.com/referit3d/referit3d/issues/5
-# ## A temp solution is to add at evlauation mode to avoid "received 0 items of ancdata" (uncomment in eval)
+# ## A temp solution is to add at evlauation mode to avoid "received 0 items of ancdata" (uncomment next line in eval)
 # torch.multiprocessing.set_sharing_strategy('file_system')
 
 from referit3d.in_out.arguments import parse_arguments
