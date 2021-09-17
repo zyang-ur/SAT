@@ -61,7 +61,7 @@ First you should download the train/val scans of ScanNet if you do not have them
 You can dowload the Nr3D and Sr3D/Sr3D+ from [Referit3D](https://github.com/referit3d/referit3d#our-linguistic-data)
 
 ### SAT Processed 2D Features
-You can download the processed 2D object image features from [here](https://drive.google.com/file/d/1X_a9jWWNNkBGs49A3j4OKW4iz-gytnJA/view?usp=sharing). The cached feature should be placed under the ``referit3d/data`` folder, or match the cache path in the [dataloader](https://github.com/zyang-ur/SAT/blob/main/referit3d/in_out/pt_datasets/listening_dataset.py#L142).
+You can download the processed 2D object image features from [here](https://drive.google.com/file/d/1X_a9jWWNNkBGs49A3j4OKW4iz-gytnJA/view?usp=sharing). The cached feature should be placed under the ``referit3d/data`` folder, or match the cache path in the [dataloader](https://github.com/zyang-ur/SAT/blob/main/referit3d/in_out/pt_datasets/listening_dataset.py#L142). The feature extraction code will be cleaned and released ASAP, feel free to contact me if you need that before the official release.
 
 ## Training
 Please reference the following example command on Nr3D. Feel free to change to parameters. Please reference [arguments](referit3d/in_out/arguments.py) for valid options.
@@ -72,8 +72,9 @@ Please reference the following example command on Nr3D. Feel free to change to p
 
 ## Evaluation
 Please find the pretrained models [here](https://drive.google.com/drive/folders/14VZQHu38mZ0aoLbBAXM-_LHCMgBktH_Q?usp=sharing) (clsvecROI on Nr3D).
+A known issue [here](https://github.com/zyang-ur/SAT/blob/main/referit3d/scripts/train_referit3d.py#L12).
   ```
-  python train_referit3d.py --transformer --model mmt_referIt3DNet -scannet-file $scanfile -referit3D-file $nr3dfile --n-workers 2 --gpu $gpu --unit-sphere-norm True --mode evaluate --pretrain-path $pretrain_path/best_model.pth
+  python train_referit3d.py --transformer --model mmt_referIt3DNet -scannet-file $scanfile -referit3D-file $nr3dfile --log-dir log/$exp_id --n-workers 2 --gpu $gpu --unit-sphere-norm True --feat2d clsvecROI --mode evaluate --pretrain-path $pretrain_path/best_model.pth
   ```
 
 ## Credits

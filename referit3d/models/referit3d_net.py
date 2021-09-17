@@ -155,9 +155,9 @@ class MMT_ReferIt3DNet(nn.Module):
             obj_num=obj_num
         )
         if self.args_mode == 'evaluate':
-            assert(mmt_results['mmt_seq_output'].shape[1]==(self.text_length+2+obj_num*2))
+            assert(mmt_results['mmt_seq_output'].shape[1]==(self.text_length+obj_num))
         if self.args_mode != 'evaluate' and self.context_2d=='unaligned':
-            assert(mmt_results['mmt_seq_output'].shape[1]==(self.text_length+2+obj_num*3))
+            assert(mmt_results['mmt_seq_output'].shape[1]==(self.text_length+obj_num*2))
         result['logits'] = self.matching_cls(mmt_results['mmt_obj_output'])
 
         result['mmt_obj_output'] = mmt_results['mmt_obj_output']
