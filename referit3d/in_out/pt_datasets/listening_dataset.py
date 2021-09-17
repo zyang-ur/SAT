@@ -140,7 +140,7 @@ class ListeningDataset(Dataset):
 
         # load cached 2D context information
         if os.path.isfile('../data/scannet_frames_25k_gtobjfeat_aggregate/%s.npy'%scan.scan_id):
-            context_2d = np.load('../data/scannet_frames_25k_gtobjfeat_aggregate/%s.npy'%scan.scan_id,allow_pickle=True,encoding='latin1')    ## TODO: update relative path
+            context_2d = np.load('../data/scannet_frames_25k_gtobjfeat_aggregate/%s.npy'%scan.scan_id,allow_pickle=True,encoding='latin1')
             objfeat_2d = context_2d.item()['obj_feat']
             bbox_2d = context_2d.item()['obj_coord']
             bboxsize_2d = context_2d.item()['obj_size']

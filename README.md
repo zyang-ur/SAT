@@ -6,7 +6,7 @@ by [Zhengyuan Yang](zhengyuan.info), [Songyang Zhang](https://sy-zhang.github.io
 IEEE International Conference on Computer Vision (ICCV), 2021, Oral
 
 
-### Introduction
+## Introduction
 We propose 2D Semantics Assisted Training (SAT) that assists 3D visual grounding with 2D semantics.
 SAT helps 3D tasks with 2D semantics in training but does not require 2D inputs during inference.
 For more details, please refer to our
@@ -18,7 +18,7 @@ For more details, please refer to our
   <img src="https://zyang-ur.github.io//SAT/intro.jpg" width="75%"/>
 </p>
 
-### Citation
+## Citation
 
     @inproceedings{yang2021sat,
       title={SAT: 2D Semantics Assisted Training for 3D Visual Grounding},
@@ -27,7 +27,7 @@ For more details, please refer to our
       year={2021}
     }
 
-### Prerequisites
+## Prerequisites
 * Python 3.6.9
 * Pytorch 1.4.0
 * Please refer to ``setup.py`` (Thanks to [ReferIt3D](https://github.com/referit3d/referit3d)). Or using
@@ -54,8 +54,28 @@ For more details, please refer to our
     ```
 
 ## Data
+### ScanNet
+First you should download the train/val scans of ScanNet if you do not have them locally. Please refer to the [instructions from referit3d](referit3d/data/scannet/README.md) for more details.
 
+### Ref3D Linguistic Data
+You can dowload the Nr3D and Sr3D/Sr3D+ from [Referit3D](https://github.com/referit3d/referit3d#our-linguistic-data)
 
-### Credits
+### SAT Processed 2D Features
+You can download the processed 2D object image features from [here](https://drive.google.com/file/d/1X_a9jWWNNkBGs49A3j4OKW4iz-gytnJA/view?usp=sharing). The cached feature should be placed under the ``referit3d/data`` folder, or match the cache path in the [dataloader](https://github.com/zyang-ur/SAT/blob/main/referit3d/in_out/pt_datasets/listening_dataset.py#L142).
+
+## Training
+Please reference the following example command on Nr3D. Feel free to change to parameters. Please reference [arguments](referit3d/in_out/arguments.py) for valid options.
+  ```
+  scanfile=keep_all_points_00_view_with_global_scan_alignment.pkl ## keep_all_points_with_global_scan_alignment if include Sr3D
+  python train_referit3d.py --patience 100 --max-train-epochs 100 --init-lr 1e-4 --batch-size 16 --transformer --model mmt_referIt3DNet -scannet-file $scanfile -referit3D-file $nr3dfile_csv --log-dir log/$exp_id --n-workers 2 --gpu 0 --unit-sphere-norm True --feat2d clsvecROI --context_2d unaligned --mmt_mask train2d --warmup
+  ```
+
+## Evaluation
+Please find the pretrained models [here](https://drive.google.com/drive/folders/14VZQHu38mZ0aoLbBAXM-_LHCMgBktH_Q?usp=sharing) (clsvecROI on Nr3D).
+  ```
+  python train_referit3d.py --transformer --model mmt_referIt3DNet -scannet-file $scanfile -referit3D-file $nr3dfile --n-workers 2 --gpu $gpu --unit-sphere-norm True --mode evaluate --pretrain-path $pretrain_path/best_model.pth
+  ```
+
+## Credits
 The project is built based on the following repository:
 * [ReferIt3D](https://github.com/referit3d/referit3d).
