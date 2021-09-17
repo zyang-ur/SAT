@@ -1,11 +1,11 @@
 from setuptools import setup
 
-setup(name='referit3d',
+setup(name='SAT',
       version='0.1',
-      description='Comprehension of localizing 3D objects in scenes.',
-      url='http://github.com/referit3d/referit3d',
-      author='referit3d_team',
-      author_email='optas@cs.stanford.edu',
+      description='SAT 2D Semantics Assisted Training for 3D Visual Grounding.',
+      url='https://github.com/zyang-ur/SAT',
+      author='zyang',
+      author_email='zhengyuan.yang13@gmail.com',
       license='MIT',
       install_requires=['scikit-learn',
                         'matplotlib',
@@ -20,5 +20,5 @@ setup(name='referit3d',
                         'shapely',
                         'pyyaml'
                         ],
-      packages=['referit3d'],
+      packages=['SAT'],
       zip_safe=False)
