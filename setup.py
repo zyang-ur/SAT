@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='SAT',
+setup(name='referit3d',
       version='0.1',
       description='SAT 2D Semantics Assisted Training for 3D Visual Grounding.',
       url='https://github.com/zyang-ur/SAT',
@@ -20,5 +20,5 @@ setup(name='SAT',
                         'shapely',
                         'pyyaml'
                         ],
-      packages=['SAT'],
+      packages=['referit3d'],
       zip_safe=False)

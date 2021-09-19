@@ -28,9 +28,10 @@ For more details, please refer to our
     }
 
 ## Prerequisites
-* Python 3.6.9
-* Pytorch 1.4.0
-* Please refer to ``setup.py`` (Thanks to [ReferIt3D](https://github.com/referit3d/referit3d)).
+* Python 3.6.9 (e.g., conda create -n sat_env python=3.6.9 cudatoolkit=10.0)
+* Pytorch 1.2.0 (e.g., conda install pytorch==1.2.0 cudatoolkit=10.0 -c pytorch)
+* Install other common packages (numpy, etc.)
+* Please refer to ``setup.py`` (From [ReferIt3D](https://github.com/referit3d/referit3d)).
 
 ## Installation
 
@@ -77,4 +78,4 @@ A known issue [here](https://github.com/zyang-ur/SAT/blob/main/referit3d/scripts
 The project is built based on the following repository:
 * [ReferIt3D](https://github.com/referit3d/referit3d).
 
-Part of the code or models are from [MMF](https://github.com/facebookresearch/mmf), [TAP](https://github.com/microsoft/TAP), and [ViLBERT](https://github.com/jiasenlu/vilbert_beta).
+Part of the code or models are from [ScanRef](https://github.com/daveredrum/ScanRefer), [MMF](https://github.com/facebookresearch/mmf), [TAP](https://github.com/microsoft/TAP), and [ViLBERT](https://github.com/jiasenlu/vilbert_beta).
