@@ -46,8 +46,8 @@ For more details, please refer to our
 - To use a PointNet++ visual-encoder you need to compile its CUDA layers for [PointNet++](http://arxiv.org/abs/1706.02413):
 ```Note: To do this compilation also need: gcc5.4 or later.```
     ```
-        cd external_tools/pointnet2
-        python setup.py install
+    cd external_tools/pointnet2
+    python setup.py install
     ```
 
 ## Data
