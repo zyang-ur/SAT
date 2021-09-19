@@ -23,6 +23,8 @@ def single_object_encoder(out_dim: int) -> PointNetPP:
 
     @param: out_dims: The dimension of each object feature
     """
+    ## Further improve acc by ~2%. But increase training time & GPU memory
+    ## Set default as the lighter version
     # return PointNetPP(sa_n_points=[64, 32, None],
     #                   sa_n_samples=[64, 64, None],
     return PointNetPP(sa_n_points=[32, 16, None],

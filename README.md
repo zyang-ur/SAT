@@ -30,11 +30,7 @@ For more details, please refer to our
 ## Prerequisites
 * Python 3.6.9
 * Pytorch 1.4.0
-* Please refer to ``setup.py`` (Thanks to [ReferIt3D](https://github.com/referit3d/referit3d)). Or using
-
-  ```
-  python setup.py develop
-  ```
+* Please refer to ``setup.py`` (Thanks to [ReferIt3D](https://github.com/referit3d/referit3d)).
 
 ## Installation
 
