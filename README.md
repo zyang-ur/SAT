@@ -30,7 +30,7 @@ For more details, please refer to our
 ## Prerequisites
 * Python 3.6.9 (e.g., conda create -n sat_env python=3.6.9 cudatoolkit=10.0)
 * Pytorch 1.2.0 (e.g., conda install pytorch==1.2.0 cudatoolkit=10.0 -c pytorch)
-* Install other common packages (numpy, etc.)
+* Install other common packages (numpy, [pytorch_transformers](https://pypi.org/project/pytorch-transformers/), etc.)
 * Please refer to ``setup.py`` (From [ReferIt3D](https://github.com/referit3d/referit3d)).
 
 ## Installation
@@ -63,6 +63,7 @@ You can download the processed 2D object image features from [here](https://driv
 ## Training
 Please reference the following example command on Nr3D. Feel free to change the parameters. Please reference [arguments](referit3d/in_out/arguments.py) for valid options.
   ```
+  cd referit3d/scripts
   scanfile=keep_all_points_00_view_with_global_scan_alignment.pkl ## keep_all_points_with_global_scan_alignment if include Sr3D
   python train_referit3d.py --patience 100 --max-train-epochs 100 --init-lr 1e-4 --batch-size 16 --transformer --model mmt_referIt3DNet -scannet-file $scanfile -referit3D-file $nr3dfile_csv --log-dir log/$exp_id --n-workers 2 --gpu 0 --unit-sphere-norm True --feat2d clsvecROI --context_2d unaligned --mmt_mask train2d --warmup
   ```
@@ -71,6 +72,7 @@ Please reference the following example command on Nr3D. Feel free to change the 
 Please find the pretrained models [here](https://drive.google.com/drive/folders/14VZQHu38mZ0aoLbBAXM-_LHCMgBktH_Q?usp=sharing) (clsvecROI on Nr3D).
 A known issue [here](https://github.com/zyang-ur/SAT/blob/main/referit3d/scripts/train_referit3d.py#L12).
   ```
+  cd referit3d/scripts
   python train_referit3d.py --transformer --model mmt_referIt3DNet -scannet-file $scanfile -referit3D-file $nr3dfile --log-dir log/$exp_id --n-workers 2 --gpu $gpu --unit-sphere-norm True --feat2d clsvecROI --mode evaluate --pretrain-path $pretrain_path/best_model.pth
   ```
 
