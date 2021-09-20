@@ -46,7 +46,7 @@ def parse_arguments(notebook_options=None):
                         help='utterances with more tokens than this they will be ignored.')
     parser.add_argument('--points-per-object', type=int, default=1024,
                         help='points sampled to make a point-cloud per object of a scan.')
-    parser.add_argument('--unit-sphere-norm', type=str2bool, default=False,
+    parser.add_argument('--unit-sphere-norm', type=str2bool, default=True,
                         help="Normalize each point-cloud to be in a unit sphere.")
     parser.add_argument('--mentions-target-class-only', type=str2bool, default=True,
                         help='If True, drop references that do not explicitly mention the target-class.')
@@ -65,12 +65,12 @@ def parse_arguments(notebook_options=None):
     parser.add_argument('--init-lr', type=float, default=0.0001, help='learning rate for training.')
     parser.add_argument('--patience', type=int, default=100, help='if test-acc does not improve for patience consecutive'
                                                                  'epoch, stop training. fixed step if patience==max epoch')
-    parser.add_argument("--warmup", action="store_true", default=False, help="if lr linear warmup.")
+    parser.add_argument("--warmup", action="store_true", default=True, help="if lr linear warmup.")
 
     #
     # Model arguments
     #
-    parser.add_argument('--model', type=str, default='referIt3DNet', choices=['referIt3DNet',
+    parser.add_argument('--model', type=str, default='mmt_referIt3DNet', choices=['referIt3DNet',
                                                                               'directObj2Lang',
                                                                               'referIt3DNetAttentive',
                                                                               'mmt_referIt3DNet'])
@@ -91,7 +91,7 @@ def parse_arguments(notebook_options=None):
                                                                          ' object its class type is added.')
     parser.add_argument("--transformer", action="store_true", default=True, help="transformer mmt fusion module.")
     parser.add_argument('--context_obj', type=str, default=None, help="context object; rand, closest, farthest.")
-    parser.add_argument('--feat2d', type=str, default="ROI", help="ROI/clsvec/clsvecROI.")
+    parser.add_argument('--feat2d', type=str, default="clsvecROI", help="ROI/clsvec/clsvecROI.")
     parser.add_argument('--context_2d', type=str, default=None, help="how to use 2D context; None, aligned or unaligned.")
     parser.add_argument('--mmt_mask', type=str, default=None, help="if apply certain mmt mask.")
 
@@ -100,7 +100,7 @@ def parse_arguments(notebook_options=None):
     #
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device. [default: 0]')
     parser.add_argument('--n-gpus', type=int, default=1, help='number gpu devices. [default: 1]')
-    parser.add_argument('--batch-size', type=int, default=32, help='batch size per gpu. [default: 32]')
+    parser.add_argument('--batch-size', type=int, default=16, help='batch size per gpu. [default: 32]')
     parser.add_argument('--save-args', type=str2bool, default=True, help='save arguments in a json.txt')
     parser.add_argument('--experiment-tag', type=str, default=None, help='will be used to name a subdir '
                                                                          'for log-dir if given')
